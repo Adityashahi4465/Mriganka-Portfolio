@@ -1,7 +1,7 @@
 import React from 'react';
 import Classes from './Profile.module.css'
 import { TypeAnimation } from 'react-type-animation'
-import { BsFacebook, BsLinkedin } from 'react-icons/bs'
+import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs'
 import { AiFillInstagram, AiFillGithub } from 'react-icons/ai'
 import Link from 'next/link';
 
@@ -12,17 +12,20 @@ function Profile(props) {
                 <div className={Classes['profile-details']}>
                     <div className={Classes['colz']}>
                         <div className="flex space-x-4 cursor-pointer scale-150 mb-4">
+                            <a href='https://www.instagram.com/viratsingh1st/' target='blank'>
+                                <AiFillInstagram />
+                            </a>
+                            <a href='https://www.facebook.com/kshatriyavirat.singh' target='blank'>
+                                <BsFacebook />
+                            </a>
+                            <a href='https://twitter.com/adityakmcs' target='blank'>
+                                <BsTwitter />
+                            </a>
                             <a href='https://www.linkedin.com/in/aditya4465/' target='blank'>
                                 <BsLinkedin />
                             </a>
-                            <a href='https://www.instagram.com/ady_shahi/' target='blank'>
-                                <AiFillInstagram />
-                            </a>
                             <a href='https://github.com/Adityashahi4465' target='blank'>
                                 <AiFillGithub />
-                            </a>
-                            <a href='https://www.facebook.com/profile.php?id=100057639700910' target='blank'>
-                                <BsFacebook />
                             </a>
                         </div>
                     </div>
@@ -56,7 +59,7 @@ function Profile(props) {
 
                         </h1>
                         <span className={Classes['profile-role-tagline']}>
-                        Exploring Life with a Smile 😄
+                            Exploring Life with a Smile 😄
                         </span>
                     </div>
                 </div>
