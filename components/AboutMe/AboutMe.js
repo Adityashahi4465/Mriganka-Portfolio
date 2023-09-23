@@ -34,7 +34,7 @@ function AboutMe(props) {
                     <div className="relative w-[100%] h-[20rem] md:h-auto md:w-[50%]">
                         <Image
                             src="/self.png"
-                            objectFit='cover'
+                            style='cover'
                             fill
                             alt="profile image"
                         />

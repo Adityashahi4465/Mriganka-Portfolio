@@ -3,12 +3,10 @@ import Classes from './Header.module.css';
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import Image from 'next/image';
 
-// Import your music file here
-const audio = new Audio('/music.mp3');
-
 const Header = (props) => {
     const [showHeaderOptions, setShowHeaderOptions] = useState(false);
     const [dark, setDark] = useState(true);
+    const [audio, setAudio] = useState(null); // Initialize audio as null
     const [isMusicPlaying, setIsMusicPlaying] = useState(false); // Initialize music as paused
 
     const showHeaderOptionsHandler = (e) => {
@@ -17,6 +15,9 @@ const Header = (props) => {
     }
 
     useEffect(() => {
+        const audioElement = new Audio("/music.mp3");
+        setAudio(audioElement);
+
         console.log(dark);
         if (dark) {
             document.documentElement.classList.add('dark');
@@ -53,7 +54,7 @@ const Header = (props) => {
                     </button>
 
                     {/* Add the audio element with your imported music file */}
-                    <audio src={audio} preload="auto" />
+                    <audio src="/music.mp3" preload="auto" ref={audio} />
                 </div>
             </div>
         </div>
