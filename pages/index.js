@@ -18,11 +18,12 @@ function Home({ projectDetails, skills }) {
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
     useEffect(() => {
         const audio = new Audio('/music.mp3');
-
-        audio.volume = 0.7; // Sets the volume to 50%
-
+        audio.volume = 0.9; // Sets the volume to 50%
         // Play the audio when the component mounts
+        audio.autoplay = true
+        audio.muted = true;
         audio.play();
+
 
         return () => {
             // Clean up the audio when the component unmounts
@@ -39,8 +40,10 @@ function Home({ projectDetails, skills }) {
                 <meta name="author" content="Aditya Shahi"></meta>
                 <link rel="shortcut icon" href="/AS_logo.png" type="image/x-icon"></link>
             </Head>
+
             <ToastContainer />
             <Zoom>
+
                 <Profile />
             </Zoom>
             <Zoom>
