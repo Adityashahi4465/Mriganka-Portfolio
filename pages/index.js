@@ -14,11 +14,10 @@ import React, { useEffect, useState } from 'react';
 
 // import backgroundMusic from '../public/music.mp3';
 
-
 function Home({ projectDetails, skills }) {
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
     useEffect(() => {
-        const audio = new Audio('./music.mp3');
+        const audio = new Audio('/music.mp3');
 
         audio.volume = 0.7; // Sets the volume to 50%
 
