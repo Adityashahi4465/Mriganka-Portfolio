@@ -18,7 +18,7 @@ function Skills({ skills }) {
                             </div>
                             <span className='absolute text-2xl font-bold opacity-0 group-hover:opacity-80 transition duration-100 ease-in-out'>{level}</span>
                         </div>
-                        <p className='text-white text-center mt-2'>{skill}</p>
+                        <p className='dark:text-white text-center mt-2'>{skill}</p>
                     </div>
                 ))}
 

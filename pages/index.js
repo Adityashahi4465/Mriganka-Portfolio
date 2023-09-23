@@ -10,7 +10,28 @@ import Project from '../components/Project';
 import ContactMe from '../components/ContactMe/ContactMe';
 import Footer from '../components/Footer/Footer';
 import Skills from '../components/Skills';
+import React, { useEffect, useState } from 'react';
+
+// import backgroundMusic from '../public/music.mp3';
+
+
 function Home({ projectDetails, skills }) {
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+    useEffect(() => {
+        const audio = new Audio('./music.mp3');
+
+        audio.volume = 0.7; // Sets the volume to 50%
+
+        // Play the audio when the component mounts
+        audio.play();
+
+        return () => {
+            // Clean up the audio when the component unmounts
+            audio.pause();
+            audio.currentTime = 0;
+        };
+    }, []);
+
     return (
         <main className='dark:bg-black'>
             <Head>
@@ -63,34 +84,42 @@ export async function getStaticProps(context) {
     ];
     const skills = [
         {
-            icon: '/dart.png',
-            skill: 'First Steps',
+            logo: '/walk.png',
+            skill: 'Walking',
+            level: '60%',
         },
         {
-            icon: '/baby-talk-icon.png',
-            skill: 'Baby Talk',
+            logo: '/cry.png',
+            skill: 'Crying',
+            level: '100%',
         },
         {
-            icon: '/baby-explore-icon.png',
-            skill: 'Explorer',
+            logo: '/explore.png',
+            skill: 'Exploring',
+            level: '80%',
         },
         {
-            icon: '/baby-smile-icon.png',
-            skill: 'Master Smiler',
+            logo: '/smile.png',
+            skill: 'Smiling',
+            level: '100%',
         },
         {
-            icon: '/baby-food-icon.png',
-            skill: 'Culinary Critic',
+            logo: '/eat.png',
+            skill: 'Eating',
+            level: '90%',
         },
         {
-            icon: '/baby-nap-icon.png',
-            skill: 'Naptime Pro',
+            logo: '/sleep.png',
+            skill: 'Napping',
+            level: '100%',
         },
         {
-            icon: '/baby-toy-icon.png',
-            skill: 'Toy Lover',
+            logo: '/toys.png',
+            skill: 'Play',
+            level: '100%',
         },
     ];
+
 
     return {
         props: { projectDetails, skills }

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Classes from './Header.module.css';
-import {MdDarkMode,MdLightMode} from "react-icons/md";
-import link from 'next/link';
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import Image from 'next/image';
+
 const Header = (props) => {
     const [showHeaderOptions, setShowHeaderOptions] = useState(false);
     const [dark, setDark] = useState(true);
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true); // New state for music
+
     const showHeaderOptionsHandler = (e) => {
         setShowHeaderOptions(!showHeaderOptions);
         console.log(showHeaderOptions);
     }
+
     useEffect(() => {
         console.log(dark);
         if (dark) {
@@ -18,9 +21,22 @@ const Header = (props) => {
             document.documentElement.classList.remove('dark');
         }
     }, [dark]);
+
     function handleTheme() {
         setDark(!dark);
     }
+
+    // Function to toggle music play/pause
+    function toggleMusic() {
+        setIsMusicPlaying(!isMusicPlaying);
+        const audio = document.querySelector('audio');
+        if (isMusicPlaying) {
+            audio.pause();
+        } else {
+            audio.play();
+        }
+    }
+
     return (
         <div className={Classes['header-container']} onClick={showHeaderOptionsHandler}>
             <div className={Classes['header-parent']}>
@@ -28,21 +44,13 @@ const Header = (props) => {
                     <span>~MS~</span>
                 </div>
                 <div className='flex justify-center items-center space-x-3 md:space-x-10'>
-                {!dark ? <MdDarkMode className='text-2xl hover:scale-125 cursor-pointer text-black' onClick={handleTheme} /> : <MdLightMode className='cursor-pointer hover:scale-125 text-2xl' onClick={handleTheme} />}
-                    <a href='https://is-blog.vercel.app/' rel='noreferrer' target="_blank" className=" text-white hover:text-black text-2xl no-underline">Blog</a>
-                    <div className='border-blue-600 relative  rounded-full overflow-hidden cursor-pointer'>
-                        <a href='https://wa.me/+919953048059'>
-                            <Image
-                                src='/whatsapp.png'
-                                alt="WhatsApp"
-                                height={30}
-                                width={30}
-                            />
-                        </a>
-                    </div>
+                    {!dark ? <MdDarkMode className='text-2xl hover:scale-125 cursor-pointer text-black' onClick={handleTheme} /> : <MdLightMode className='cursor-pointer hover:scale-125 text-2xl' onClick={handleTheme} />}
+                    {/* Add the Play/Pause button here */}
+
+
                 </div>
             </div>
-        </ div>
+        </div>
     );
 }
 

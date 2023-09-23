@@ -17,6 +17,13 @@ function credits(props) {
                     <FaBullseye />
                     <a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Freepik - Flaticon</a>
                 </li>
+                <li className='p-2 flex space-x-2 items-center'>
+                    <FaBullseye />
+                    <a href="https://www.flaticon.com/free-icons/baby" title="baby icons">Baby icons created by smashingstocks - Flaticon</a> 
+               </li>
+                <li className='p-2 flex space-x-2 items-center'>
+                    <FaBullseye />
+                    <a href="https://www.flaticon.com/free-icons/toys" title="toys icons">Toys icons created by iconixar - Flaticon</a>               </li>
             </ul>
             <Link href='/' className='flex space-x-3' >
                 <BsFillArrowLeftSquareFill className='text-2xl' />
