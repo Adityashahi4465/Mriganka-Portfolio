@@ -3,10 +3,13 @@ import Classes from './Header.module.css';
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import Image from 'next/image';
 
+// Import your music file here
+const audio = new Audio('/music.mp3');
+
 const Header = (props) => {
     const [showHeaderOptions, setShowHeaderOptions] = useState(false);
     const [dark, setDark] = useState(true);
-    const [isMusicPlaying, setIsMusicPlaying] = useState(true); // New state for music
+    const [isMusicPlaying, setIsMusicPlaying] = useState(false); // Initialize music as paused
 
     const showHeaderOptionsHandler = (e) => {
         setShowHeaderOptions(!showHeaderOptions);
@@ -26,15 +29,13 @@ const Header = (props) => {
         setDark(!dark);
     }
 
-    // Function to toggle music play/pause
-    function toggleMusic() {
-        setIsMusicPlaying(!isMusicPlaying);
-        const audio = document.querySelector('audio');
+    const toggleMusic = () => {
         if (isMusicPlaying) {
-            audio.pause();
+            audio.pause(); // Pause the audio
         } else {
-            audio.play();
+            audio.play(); // Start playing the audio
         }
+        setIsMusicPlaying(!isMusicPlaying); // Toggle the play/pause state
     }
 
     return (
@@ -45,9 +46,14 @@ const Header = (props) => {
                 </div>
                 <div className='flex justify-center items-center space-x-3 md:space-x-10'>
                     {!dark ? <MdDarkMode className='text-2xl hover:scale-125 cursor-pointer text-black' onClick={handleTheme} /> : <MdLightMode className='cursor-pointer hover:scale-125 text-2xl' onClick={handleTheme} />}
-                    {/* Add the Play/Pause button here */}
 
+                    {/* Button to start/pause music */}
+                    <button onClick={toggleMusic}>
+                        {isMusicPlaying ? "Pause Music" : "Play Music"}
+                    </button>
 
+                    {/* Add the audio element with your imported music file */}
+                    <audio src={audio} preload="auto" />
                 </div>
             </div>
         </div>
